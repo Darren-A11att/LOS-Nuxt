@@ -1,10 +1,16 @@
 <template>
   <div>
     <NuxtLayout>
-      <NuxtPage />
+      <ErrorBoundary>
+        <NuxtPage />
+      </ErrorBoundary>
     </NuxtLayout>
   </div>
 </template>
+
+<script setup>
+import ErrorBoundary from '~/components/ErrorBoundary.vue';
+</script>
 
 <style>
 html, body {
