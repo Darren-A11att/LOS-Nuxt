@@ -33,3 +33,22 @@ const statusClass = computed(() => {
   return classMap[props.status] || '';
 });
 </script>
+
+<style scoped>
+.status-badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+.status-pending {
+  @apply bg-yellow-100 text-yellow-800; /* Using yellow for pending */
+}
+.status-approved {
+  @apply bg-green-100 text-green-800; /* Using green for approved */
+}
+.status-rejected {
+  @apply bg-red-100 text-red-800; /* Using red for rejected */
+}
+.status-review {
+  @apply bg-blue-100 text-blue-800; /* Using blue for review */
+}
+/* 'incomplete' already uses bg-secondary-100 text-secondary-800 directly */
+</style>
