@@ -3,6 +3,8 @@
 </template>
 
 <script setup>
+import { computed } from 'vue';
+
 const props = defineProps({
   status: {
     type: String,
@@ -24,31 +26,18 @@ const statusText = computed(() => {
 
 const statusClass = computed(() => {
   const classMap = {
-    'pending': 'status-pending',
-    'approved': 'status-approved',
-    'rejected': 'status-rejected',
-    'review': 'status-review',
+    'pending': 'bg-yellow-100 text-yellow-800',
+    'approved': 'bg-green-100 text-green-800',
+    'rejected': 'bg-red-100 text-red-800',
+    'review': 'bg-blue-100 text-blue-800',
     'incomplete': 'bg-secondary-100 text-secondary-800'
   };
-  return classMap[props.status] || '';
+  const baseClasses = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium';
+  return `${baseClasses} ${classMap[props.status] || ''}`;
 });
 </script>
 
 <style scoped>
-.status-badge {
-  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
-}
-.status-pending {
-  @apply bg-yellow-100 text-yellow-800; /* Using yellow for pending */
-}
-.status-approved {
-  @apply bg-green-100 text-green-800; /* Using green for approved */
-}
-.status-rejected {
-  @apply bg-red-100 text-red-800; /* Using red for rejected */
-}
-.status-review {
-  @apply bg-blue-100 text-blue-800; /* Using blue for review */
-}
-/* 'incomplete' already uses bg-secondary-100 text-secondary-800 directly */
+/* Base styles are now included in the computed class */
+/* Remove all status-* specific styles and the base .status-badge style */
 </style>
